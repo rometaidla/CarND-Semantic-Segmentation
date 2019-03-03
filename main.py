@@ -60,18 +60,24 @@ def layers(vgg_layer3_out, vgg_layer4_out, vgg_layer7_out, num_classes):
         kernel_regularizer=tf.contrib.layers.l2_regularizer(1e-3))
     # TODO: try without regulizer
 
-    upscale1 = tf.layers.conv2d_transpose(conv_1x1, num_classes, 4, strides=(2, 2), padding='same',
+    upscale4 = tf.layers.conv2d_transpose(conv_1x1, num_classes, 4, strides=(2, 2), padding='same',
         kernel_regularizer=tf.contrib.layers.l2_regularizer(1e-3))
+    skip_con4 = tf.layers.conv2d(vgg_layer4_out, num_classes, 1, padding='same', 
+                                   kernel_regularizer= tf.contrib.layers.l2_regularizer(1e-3))
+    upscale4_out = tf.add(upscale4, skip_con4)
 
-    upscale2 = tf.layers.conv2d_transpose(upscale1, num_classes, 4, strides=(2, 2), padding='same',
+    upscale3 = tf.layers.conv2d_transpose(upscale4_out, num_classes, 4, strides=(2, 2), padding='same',
         kernel_regularizer=tf.contrib.layers.l2_regularizer(1e-3))
+    skip_con3 = tf.layers.conv2d(vgg_layer3_out, num_classes, 1, padding='same',
+        kernel_regularizer=tf.contrib.layers.l2_regularizer(1e-3))
+    upscale3_out = tf.add(upscale3, skip_con3)
 
-    upscale3 = tf.layers.conv2d_transpose(upscale2, num_classes, 16, strides=(8, 8), padding='same',
+    output = tf.layers.conv2d_transpose(upscale3_out, num_classes, 16, strides=(8, 8), padding='same',
         kernel_regularizer=tf.contrib.layers.l2_regularizer(1e-3))
 
     
     #tf.Print(output, [tf.shape(output)[1:3]])
-    return upscale3
+    return output
 tests.test_layers(layers)
 
 
