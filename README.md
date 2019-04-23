@@ -1,4 +1,43 @@
 # Semantic Segmentation
+
+### Network hyperparameters
+
+Epochs: 50
+Batch size: 8
+
+### Result
+
+Running network for 50 epochs gave following result:
+
+![result gif](./samples/result.gif)
+
+Loss was continuously going smaller and would probably get even better result when training longer 
+(but there's risk of overfitting): 
+
+![result chart](./samples/result_chart.png)
+
+#### 10 epochs vs 50 epochs
+
+Here are some more interesting images, where network trained for 10 epochs struggled, but network trained for 50 epoch did quite well:
+
+10 epochs
+![um_000069_10](./samples/10epoch/um_000069.png)
+
+50 epochs
+![um_000069_50](./samples/50epoch/um_000069.png)
+
+10 epochs
+![uu_000053_10](./samples/10epoch/uu_000053.png)
+
+50 epochs
+![uu_000053_50](./samples/50epoch/uu_000053.png)
+
+10 epochs
+![uu_000067_10](./samples/10epoch/uu_000067.png)
+
+50 epochs
+![uu_000067_50](./samples/50epoch/uu_000067.png)
+
 ### Introduction
 In this project, you'll label the pixels of a road in images using a Fully Convolutional Network (FCN).
 
