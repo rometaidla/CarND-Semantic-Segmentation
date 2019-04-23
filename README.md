@@ -20,23 +20,14 @@ Loss was continuously going smaller and would probably get even better result wh
 
 Here are some more interesting images, where network trained for 10 epochs struggled, but network trained for 50 epoch did quite well:
 
-10 epochs
-![um_000069_10](./samples/10epoch/um_000069.png)
-
-50 epochs
-![um_000069_50](./samples/50epoch/um_000069.png)
-
-10 epochs
-![uu_000053_10](./samples/10epoch/uu_000053.png)
-
-50 epochs
-![uu_000053_50](./samples/50epoch/uu_000053.png)
-
-10 epochs
-![uu_000067_10](./samples/10epoch/uu_000067.png)
-
-50 epochs
-![uu_000067_50](./samples/50epoch/uu_000067.png)
+10 epochs          |  50 epochs
+:-------------------------:|:-------------------------:
+![um_000009_10](./samples/10epoch/um_000009.png)  |  ![um_000009_50](./samples/50epoch/um_000009.png)
+![um_000069_10](./samples/10epoch/um_000069.png)  |  ![um_000069_50](./samples/50epoch/um_000069.png)
+![umm_000019_10](./samples/10epoch/umm_000019.png)|  ![umm_000019_50](./samples/50epoch/umm_000019.png)
+![uu_000052_10](./samples/10epoch/uu_000052.png)  |  ![uu_000052_50](./samples/50epoch/uu_000052.png)
+![uu_000053_10](./samples/10epoch/uu_000053.png)  |  ![uu_000053_50](./samples/50epoch/uu_000053.png)
+![uu_000067_10](./samples/10epoch/uu_000067.png)  |  ![uu_000067_50](./samples/50epoch/uu_000067.png)
 
 ### Introduction
 In this project, you'll label the pixels of a road in images using a Fully Convolutional Network (FCN).
