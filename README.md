@@ -1,9 +1,31 @@
 # Semantic Segmentation
 
-### Network hyperparameters
+The goal of this project is to use Fully Convolutional Network (FCN) to classify pixels of road images.
 
-Epochs: 50
-Batch size: 8
+### Solution
+
+Network architecture follows solution described in paper [Fully Convolutional Networks for Semantic Segmentation](https://arxiv.org/pdf/1605.06211.pdf).
+
+Last fully connected layers of pre-trained VGG-16 network was replaced with 1x1 convolutions. Decoder layers were
+added to the network, so result is up-sampled to original images size.
+
+Skip connections was used by combining results of earlier layers with result of upsampling layers. Without this some information
+would be lost and up-sampling result would be poorer.
+
+#### Optimizer
+
+Cross entropy loss with Adam optimizer was used. L2 regularization was used to avoid overfitting.
+
+#### Training
+
+Final network was trained using following parameters:
+
+Parameter     |  Value
+:------------:|:--------:
+epochs        | 50
+batch size    | 8
+keep_prob     | 0.5, 
+learning_rate | 0.0010
 
 ### Result
 
@@ -11,7 +33,7 @@ Running network for 50 epochs gave following result:
 
 ![result gif](./samples/result.gif)
 
-Loss was continuously going smaller and would probably get even better result when training longer 
+Cross entropy loss was continuously going smaller and would probably get even better result when training longer 
 (but there's risk of overfitting): 
 
 ![result chart](./samples/result_chart.png)
@@ -20,8 +42,8 @@ Loss was continuously going smaller and would probably get even better result wh
 
 Here are some more interesting images, where network trained for 10 epochs struggled, but network trained for 50 epoch did quite well:
 
-10 epochs          |  50 epochs
-:-------------------------:|:-------------------------:
+10 epochs                                         |  50 epochs
+:------------------------------------------------:|:-------------------------:
 ![um_000009_10](./samples/10epoch/um_000009.png)  |  ![um_000009_50](./samples/50epoch/um_000009.png)
 ![um_000069_10](./samples/10epoch/um_000069.png)  |  ![um_000069_50](./samples/50epoch/um_000069.png)
 ![umm_000019_10](./samples/10epoch/umm_000019.png)|  ![umm_000019_50](./samples/50epoch/umm_000019.png)
